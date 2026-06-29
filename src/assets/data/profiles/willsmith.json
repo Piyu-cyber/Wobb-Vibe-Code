@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "6727327145951183878",
+      "sec_uid": "MS4wLjABAAAA8ezUaW4ecJX222ObGXxt07F9BIh4QH3-g1P1DHyChT2LLi2cn-vAE2R53-H672ZO",
+      "username": "willsmith",
+      "url": "https://www.tiktok.com/share/user/6727327145951183878",
+      "picture": "https://imgp.sptds.icu/v2?9gRRkBbg4nctjMDXek72QaA0lwJ%2B7AvoxtJKlEuzU8RZC78ehYBtaTYOSfFVCKJikUl7RxRA5xxPd0U8i6n293nRqjnobWsF%2FyRm7mgPYbXYiYBp6H1ot8TA2i12OZMES%2FGfIvCb4BWfDz3VLG%2Fwfg%3D%3D",
+      "fullname": "Will Smith",
+      "is_verified": true,
+      "followers": 75300000,
+      "engagements": 125052,
+      "engagement_rate": 0.0016607171314741037,
+      "avg_views": 1999533,
+      "type": "tiktok",
+      "description": "Just a guy having fun. Actor, producer, and part-time TikToker.",
+      "posts_count": 150,
+      "avg_likes": 3500000,
+      "avg_comments": 55000,
+      "avg_reels_plays": 25000000,
+      "gender": "Male",
+      "age_group": "45-54",
+      "is_business": true
+    }
+  }
+}

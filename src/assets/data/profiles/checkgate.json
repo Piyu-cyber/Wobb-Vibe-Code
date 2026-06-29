@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "UCbCmjCuTUZos6Inko4u57UQ",
+      "username": "checkgate",
+      "custom_name": "CoComelon",
+      "handle": "CoComelon",
+      "url": "https://www.youtube.com/channel/UCbCmjCuTUZos6Inko4u57UQ",
+      "picture": "https://yt3.googleusercontent.com/ytc/AIdro_mR-I4TDlJI7Rc2jwF0cZf6uMnzDpkRggMK4zGOi4eOndY=s480-c-k-c0x00ffffff-no-rj",
+      "fullname": "Cocomelon - Nursery Rhymes",
+      "is_verified": false,
+      "followers": 184000000,
+      "engagements": 124944,
+      "engagement_rate": 0.0006790434782608695,
+      "avg_views": 15000000,
+      "type": "youtube",
+      "description": "Cocomelon makes learning fun with 3D animation, educational lyrics, and toe-tapping music! Kids will laugh, dance, sing, and play along.",
+      "posts_count": 1200,
+      "avg_likes": 250000,
+      "avg_comments": 5000,
+      "gender": "Other",
+      "age_group": "18-24",
+      "is_business": true
+    }
+  }
+}

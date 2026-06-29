@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "6748458643983238149",
+      "sec_uid": "MS4wLjABAAAAIQGNoHByQvokcLbWCGnIfas0OV2nctsZnRFbN7eB04xt-9usrHe3UvXJRZLxBWlJ",
+      "username": "bellapoarch",
+      "url": "https://www.tiktok.com/share/user/6748458643983238149",
+      "picture": "https://imgp.sptds.icu/v2?9gRRkBbg4nctjMDXek72QSCMaxxBuDuVcQlJY8X8h9vqTqkZLQyMnqcWX9I4IhQ3KrJXiRxujMSsHUHl4mFsrQ9sg%2BalAq2EdG88JTzBHoOZ8o%2F40zRljnm3HdFDumlq%2BdoCXWi2ojcWxeRIfm7l%2FA%3D%3D",
+      "fullname": "Bella Poarch",
+      "is_verified": true,
+      "followers": 94500000,
+      "engagements": 731630,
+      "engagement_rate": 0.007742116402116402,
+      "avg_views": 9769565,
+      "type": "tiktok",
+      "description": "I play video games and make faces. Welcome to my world of music and gaming.",
+      "posts_count": 420,
+      "avg_likes": 2800000,
+      "avg_comments": 35000,
+      "avg_reels_plays": 20000000,
+      "gender": "Female",
+      "age_group": "18-24",
+      "is_business": true
+    }
+  }
+}

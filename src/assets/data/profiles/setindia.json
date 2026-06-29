@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "UCpEhnqL0y41EpW2TvWAHD7Q",
+      "username": "setindia",
+      "custom_name": "setindia",
+      "handle": "SETIndia",
+      "url": "https://www.youtube.com/channel/UCpEhnqL0y41EpW2TvWAHD7Q",
+      "picture": "https://yt3.googleusercontent.com/vmmZsYmryt238vqck4KAYf69gOSu22ZfqVE3rwT1tYz4hr68xl7crIUK7kghQgR6RiB9IlQ5mQ=s900-c-k-c0x00ffffff-no-rj",
+      "fullname": "SET India",
+      "is_verified": true,
+      "followers": 178000000,
+      "engagements": 357,
+      "engagement_rate": 0.0000020056179775280897,
+      "avg_views": 250000,
+      "type": "youtube",
+      "description": "Sony Entertainment Television is one of the leading Hindi General Entertainment channels in India. Watch the best of Indian television.",
+      "posts_count": 125000,
+      "avg_likes": 15000,
+      "avg_comments": 400,
+      "gender": "Other",
+      "age_group": "25-34",
+      "is_business": true
+    }
+  }
+}

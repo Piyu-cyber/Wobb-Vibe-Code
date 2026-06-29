@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "UCvlE5gTbOvjiolFlEm-c_Ow",
+      "custom_name": "VladandNiki",
+      "handle": "VladandNiki",
+      "url": "https://www.youtube.com/channel/UCvlE5gTbOvjiolFlEm-c_Ow",
+      "picture": "https://yt3.googleusercontent.com/il7dQx5fz3qs2ykOvWQVhtjT-_grY_oPmXlah13q694r_5zUS_7M33pBuUC34Cq0VearBaT1NOE=s900-c-k-c0x00ffffff-no-rj",
+      "fullname": "Vlad and Niki",
+      "is_verified": true,
+      "followers": 126000000,
+      "engagements": 34281,
+      "engagement_rate": 0.0002720714285714286,
+      "avg_views": 12000000,
+      "type": "youtube",
+      "description": "Vlad and Niki are two brothers who love playing with toys, creating new adventures, and sharing their fun with kids around the world.",
+      "posts_count": 700,
+      "avg_likes": 180000,
+      "avg_comments": 0,
+      "gender": "Male",
+      "age_group": "18-24",
+      "is_business": true,
+      "username": "VladandNiki"
+    }
+  }
+}

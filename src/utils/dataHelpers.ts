@@ -15,7 +15,43 @@ export function getSearchData(platform: Platform): SearchData {
 
 export function extractProfiles(platform: Platform): UserProfileSummary[] {
   const data = getSearchData(platform);
-  return data.accounts.map((item) => item.account.user_profile);
+  return data.accounts.map((item) => {
+    const profile = item.account.user_profile;
+    if (!profile.username) {
+      profile.username = profile.handle || (profile as any).custom_name || profile.user_id;
+    }
+    return profile;
+  });
+}
+
+function normalizeSearchKey(value: string): string {
+  return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+export function getAllSearchProfiles(): Array<UserProfileSummary & { platform: Platform }> {
+  return PLATFORMS.flatMap((platform) =>
+    extractProfiles(platform).map((profile) => ({ ...profile, platform }))
+  );
+}
+
+export function findSearchProfileByUsername(
+  username: string
+): (UserProfileSummary & { platform: Platform }) | null {
+  const key = normalizeSearchKey(username);
+
+  return (
+    getAllSearchProfiles().find((profile) => {
+      const profileKeys = [
+        profile.username,
+        profile.fullname,
+        profile.handle ?? "",
+      ]
+        .filter(Boolean)
+        .map(normalizeSearchKey);
+
+      return profileKeys.includes(key);
+    }) ?? null
+  );
 }
 
 export function filterProfiles(
@@ -23,9 +59,10 @@ export function filterProfiles(
   query: string
 ): UserProfileSummary[] {
   if (!query) return profiles;
+  const q = query.toLowerCase();
   return profiles.filter((p) => {
-    const matchUsername = p.username.toLowerCase().includes(query.toLowerCase());
-    const matchFullname = p.fullname.toLowerCase().includes(query.toLowerCase());
+    const matchUsername = (p.username || "").toLowerCase().includes(q);
+    const matchFullname = (p.fullname || "").toLowerCase().includes(q);
     return matchUsername || matchFullname;
   });
 }

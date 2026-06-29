@@ -1,41 +1,33 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, Link } from "react-router-dom";
+import type { FullUserProfile, Platform } from "@/types";
 import { Layout } from "@/components/Layout";
+import { formatFollowers, formatEngagementRate } from "@/utils/formatters";
 import { VerifiedBadge } from "@/components/VerifiedBadge";
-import type { FullUserProfile, Platform, ProfileDetailResponse } from "@/types";
-import { formatEngagementRate } from "@/utils/formatters";
-import { loadProfileByUsername } from "@/utils/profileLoader";
 import useWobbStore from "@/store/useWobbStore";
+import { loadProfileByUsername } from "@/utils/profileLoader";
+import { motion } from "framer-motion";
+import { Plus, Check, ArrowLeft, Heart, MessageCircle, Play, TrendingUp, Users } from "lucide-react";
 
-function fmt(count: number): string {
-  if (count >= 1000000) return (count / 1000000).toFixed(2) + "M";
-  if (count >= 1000) return (count / 1000).toFixed(1) + "K";
-  return String(count);
-}
+export function ProfileDetailPage() {
+  const { username } = useParams<{ username: string }>();
+  const [searchParams] = useSearchParams();
+  const platform = (searchParams.get("platform") as Platform) || "instagram";
 
-const StatCard = ({ label, value }: { label: string; value: string }) => (
-  <div className="bg-gray-50 border border-gray-100 rounded-xl p-4">
-    <div className="text-xs text-gray-400 mb-1">{label}</div>
-    <div className="text-lg font-semibold text-gray-900">{value}</div>
-  </div>
-);
-
-function ProfileDetailContent({
-  username,
-  platform,
-}: {
-  username: string;
-  platform: Platform;
-}) {
-  const [profileData, setProfileData] = useState<ProfileDetailResponse | null>(null);
+  const [profileData, setProfileData] = useState<{
+    data: { user_profile: FullUserProfile };
+  } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   const { selectedList, addToList, removeFromList } = useWobbStore();
-  const isAdded = selectedList.some((p) => p.username === username);
 
   useEffect(() => {
+    if (!username) return;
+
     let active = true;
+    setIsLoading(true);
+    setHasError(false);
 
     loadProfileByUsername(username)
       .then((data) => {
@@ -58,8 +50,9 @@ function ProfileDetailContent({
   if (isLoading) {
     return (
       <Layout>
-        <div className="flex items-center justify-center py-24 text-gray-400 text-sm">
-          Loading profile...
+        <div className="flex flex-col items-center justify-center py-24">
+          <div className="w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
+          <p className="mt-4 text-slate-500 font-medium animate-pulse">Loading creator profile...</p>
         </div>
       </Layout>
     );
@@ -68,17 +61,18 @@ function ProfileDetailContent({
   if (hasError || !profileData) {
     return (
       <Layout>
-        <div className="max-w-md mx-auto text-center py-24">
-          <p className="text-4xl mb-4">😕</p>
-          <p className="text-gray-700 font-medium mb-2">Profile not found</p>
-          <p className="text-gray-400 text-sm mb-6">
-            We could not load details for @{username}. The profile may not be available in the current dataset.
+        <div className="max-w-md mx-auto text-center py-24 glass-panel mt-12">
+          <div className="text-6xl mb-6 opacity-80">🕵️‍♀️</div>
+          <h2 className="text-2xl font-bold text-slate-800 mb-2">Profile not found</h2>
+          <p className="text-slate-500 mb-8">
+            We couldn't find detailed data for <strong>@{username}</strong>.
           </p>
           <Link
             to="/"
-            className="inline-block bg-blue-600 text-white px-5 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-medium hover:bg-slate-800 transition-colors"
           >
-            ← Back to search
+            <ArrowLeft size={18} />
+            Back to Search
           </Link>
         </div>
       </Layout>
@@ -86,120 +80,147 @@ function ProfileDetailContent({
   }
 
   const user: FullUserProfile = profileData.data.user_profile;
-
-  const handleListToggle = () => {
-    if (isAdded) {
-      removeFromList(user.username);
-    } else {
-      addToList(user, platform);
-    }
-  };
+  const isAdded = selectedList.some((p) => p.username === user.username);
 
   return (
-    <Layout>
-      <div className="max-w-2xl mx-auto">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-6"
-        >
-          ← Back to search
+    <Layout title="Creator Profile">
+      <div className="mb-6">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-primary-600 transition-colors">
+          <ArrowLeft size={16} />
+          Back to Search
         </Link>
+      </div>
 
-        <div className="bg-white border border-gray-100 rounded-2xl p-6 mb-4">
-          <div className="flex gap-5 items-start">
-            <img
-              src={user.picture}
-              className="w-20 h-20 rounded-full object-cover border border-gray-100 flex-shrink-0"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${user.username}&background=e5e7eb&color=6b7280&size=80`;
-              }}
-            />
-            <div className="flex-1 min-w-0">
-              <h1 className="text-xl font-bold text-gray-900 flex items-center gap-1">
-                @{user.username}
-                <VerifiedBadge verified={user.is_verified} />
-              </h1>
-              <p className="text-gray-500 text-sm">{user.fullname}</p>
-              <span className="inline-block mt-2 text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full capitalize">
-                {platform}
-              </span>
-
-              {user.description && (
-                <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                  {user.description}
-                </p>
-              )}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="glass-panel overflow-hidden"
+      >
+        <div className="h-32 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-600 opacity-90 relative">
+           <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]"></div>
+        </div>
+        
+        <div className="px-8 pb-8 relative">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end -mt-16 mb-8 gap-6">
+            <div className="flex items-end gap-6">
+              <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white">
+                <img
+                  src={user.picture || `https://ui-avatars.com/api/?name=${user.username || user.handle}&background=random`}
+                  alt={user.username}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = `https://ui-avatars.com/api/?name=${user.username || user.handle}&background=random`;
+                  }}
+                />
+              </div>
+              <div className="pb-2">
+                <h1 className="text-3xl font-black text-slate-800 flex items-center gap-2 tracking-tight">
+                  {user.fullname || user.username}
+                  <VerifiedBadge verified={user.is_verified} />
+                </h1>
+                <p className="text-lg text-slate-500 font-medium">@{user.username || user.handle}</p>
+              </div>
             </div>
+            
+            <button
+              onClick={() => {
+                if (isAdded) {
+                  removeFromList(user.username);
+                } else {
+                  addToList(user, platform);
+                }
+              }}
+              className={`
+                flex items-center gap-2 px-6 py-3 rounded-full font-bold shadow-lg transition-all duration-300
+                ${isAdded 
+                  ? "bg-green-500 text-white hover:bg-red-500 shadow-green-500/20 group" 
+                  : "bg-slate-900 text-white hover:scale-105 shadow-slate-900/20"}
+              `}
+            >
+              {isAdded ? (
+                <>
+                  <Check size={18} className="group-hover:hidden" />
+                  <span className="group-hover:hidden">Added to Campaign</span>
+                  <span className="hidden group-hover:inline">Remove Creator</span>
+                </>
+              ) : (
+                <>
+                  <Plus size={18} />
+                  Add to Campaign
+                </>
+              )}
+            </button>
           </div>
 
-          <div className="flex items-center gap-3 mt-5 pt-5 border-t border-gray-50">
-            <button
-              onClick={handleListToggle}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-150 ${
-                isAdded
-                  ? "bg-green-50 text-green-700 border border-green-200 hover:bg-red-50 hover:text-red-600 hover:border-red-200"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
-              }`}
-            >
-              {isAdded ? "Added ✓" : "Add to List"}
-            </button>
+          {user.description && (
+            <p className="text-slate-600 mb-10 text-lg leading-relaxed max-w-3xl">
+              {user.description}
+            </p>
+          )}
 
-            {user.url && (
-              <a
-                href={user.url}
-                target="_blank"
-                rel="noreferrer"
-                className="px-5 py-2 rounded-full text-sm font-medium border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors"
-              >
-                View on {platform} →
-              </a>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <StatCard 
+              icon={<Users className="text-blue-500" />} 
+              label="Followers" 
+              value={formatFollowers(user.followers)} 
+            />
+            {user.engagement_rate !== undefined && (
+              <StatCard 
+                icon={<TrendingUp className="text-green-500" />} 
+                label="Engagement" 
+                value={formatEngagementRate(user.engagement_rate)} 
+              />
+            )}
+            {user.posts_count !== undefined && (
+              <StatCard 
+                icon={<div className="text-purple-500 font-bold text-lg">#</div>} 
+                label="Posts" 
+                value={String(user.posts_count)} 
+              />
+            )}
+            {user.avg_likes !== undefined && (
+              <StatCard 
+                icon={<Heart className="text-red-500" />} 
+                label="Avg Likes" 
+                value={formatFollowers(user.avg_likes)} 
+              />
+            )}
+            {user.avg_comments !== undefined && (
+              <StatCard 
+                icon={<MessageCircle className="text-amber-500" />} 
+                label="Avg Comments" 
+                value={formatFollowers(user.avg_comments)} 
+              />
+            )}
+            {user.avg_reels_plays !== undefined && (
+              <StatCard 
+                icon={<Play className="text-indigo-500" />} 
+                label="Reels Plays" 
+                value={formatFollowers(user.avg_reels_plays)} 
+              />
+            )}
+            {user.avg_views !== undefined && user.avg_views > 0 && (
+              <StatCard 
+                icon={<Play className="text-indigo-500" />} 
+                label="Avg Views" 
+                value={formatFollowers(user.avg_views)} 
+              />
             )}
           </div>
         </div>
-
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          <StatCard label="Followers" value={fmt(user.followers)} />
-          <StatCard
-            label="Engagement Rate"
-            value={formatEngagementRate(user.engagement_rate)}
-          />
-          {user.posts_count !== undefined && (
-            <StatCard label="Posts" value={String(user.posts_count)} />
-          )}
-          {user.avg_likes !== undefined && (
-            <StatCard label="Avg Likes" value={fmt(user.avg_likes)} />
-          )}
-          {user.avg_comments !== undefined && (
-            <StatCard label="Avg Comments" value={fmt(user.avg_comments)} />
-          )}
-          {user.avg_views !== undefined && user.avg_views > 0 && (
-            <StatCard label="Avg Views" value={fmt(user.avg_views)} />
-          )}
-          {user.engagements !== undefined && (
-            <StatCard
-              label="Engagements"
-              value={user.engagements.toLocaleString()}
-            />
-          )}
-        </div>
-      </div>
+      </motion.div>
     </Layout>
   );
 }
 
-export function ProfileDetailPage() {
-  const { username } = useParams<{ username: string }>();
-  const [searchParams] = useSearchParams();
-  const platform = (searchParams.get("platform") ?? "instagram") as Platform;
-
-  if (!username) {
-    return (
-      <Layout>
-        <p>Invalid profile</p>
-        <Link to="/">Back</Link>
-      </Layout>
-    );
-  }
-
-  return <ProfileDetailContent key={username} username={username} platform={platform} />;
+function StatCard({ label, value, icon }: { label: string; value: string; icon?: React.ReactNode }) {
+  return (
+    <div className="glass-card p-5 border border-slate-100 hover:border-primary-100 transition-colors">
+      <div className="flex items-center gap-3 mb-2">
+        {icon && <div className="p-2 bg-slate-50 rounded-lg">{icon}</div>}
+        <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">{label}</div>
+      </div>
+      <div className="text-2xl font-black text-slate-800">{value}</div>
+    </div>
+  );
 }

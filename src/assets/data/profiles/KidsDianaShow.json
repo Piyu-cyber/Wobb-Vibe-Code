@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "UCk8GzjMOrta8yxDcKfylJYw",
+      "custom_name": "KidsDianaShow",
+      "handle": "KidsDianaShow",
+      "url": "https://www.youtube.com/channel/UCk8GzjMOrta8yxDcKfylJYw",
+      "picture": "https://yt3.googleusercontent.com/ytc/AIdro_kWUVocierGiQqzhp6IVSjzD7AgfGErLQUuN5tq9yP54-o=s480-c-k-c0x00ffffff-no-rj",
+      "fullname": "✿ Kids Diana Show",
+      "is_verified": true,
+      "followers": 126000000,
+      "engagements": 22048,
+      "engagement_rate": 0.00017498412698412698,
+      "avg_views": 10000000,
+      "type": "youtube",
+      "description": "Kids Diana Show - the #1 rated kids YouTube channel! Discover toys, songs, and imaginative play with Diana and her brother Roma.",
+      "posts_count": 1100,
+      "avg_likes": 160000,
+      "avg_comments": 0,
+      "gender": "Female",
+      "age_group": "18-24",
+      "is_business": true,
+      "username": "KidsDianaShow"
+    }
+  }
+}

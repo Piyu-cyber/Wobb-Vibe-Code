@@ -12,6 +12,7 @@ export interface UserProfileSummary {
   engagement_rate?: number;
   handle?: string;
   avg_views?: number;
+  description?: string;
 }
 
 export interface SearchAccount {

@@ -1,0 +1,27 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "107955",
+      "sec_uid": "MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM",
+      "username": "tiktok",
+      "url": "https://www.tiktok.com/share/user/107955",
+      "picture": "https://imgp.sptds.icu/v2?9gRRkBbg4nctjMDXek72QaA0lwJ%2B7AvoxtJKlEuzU8RZC78ehYBtaTYOSfFVCKJiF%2BceFGsClPJZBiCwsOoAR%2Fz%2BgLvzqZ8cSTvbaxRbWtrIIxnSf1wZatdDLC23nhDN",
+      "fullname": "TikTok",
+      "is_verified": true,
+      "followers": 82200000,
+      "engagements": 41761,
+      "engagement_rate": 0.0005080413625304137,
+      "avg_views": 3475620,
+      "type": "tiktok",
+      "description": "Make Your Day. The official TikTok account showcasing the best trends and creators.",
+      "posts_count": 500,
+      "avg_likes": 800000,
+      "avg_comments": 15000,
+      "avg_reels_plays": 8000000,
+      "gender": "Other",
+      "age_group": "18-24",
+      "is_business": true
+    }
+  }
+}

@@ -10,5 +10,6 @@ export function formatFollowers(count: number): string {
 
 export function formatEngagementRate(rate: number | undefined): string {
   if (rate === undefined) return "N/A";
-  return (rate*100).toFixed(2) + "%";
+  const percentage = rate > 1 ? rate : rate * 100;
+  return percentage.toFixed(2) + "%";
 }

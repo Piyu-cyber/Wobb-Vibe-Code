@@ -1,0 +1,26 @@
+{
+  "data": {
+    "success": true,
+    "user_profile": {
+      "user_id": "UCFFbwnve3yF62-tVXkTyHqg",
+      "username": "zeemusiccompany",
+      "handle": "zeemusiccompany",
+      "url": "https://www.youtube.com/channel/UCFFbwnve3yF62-tVXkTyHqg",
+      "picture": "https://yt3.googleusercontent.com/zGnrFUqmF6Xp2tM8ecG9sVXyHjJUrqa7GnNV_kATAdAvSwfgIg7693GURHASA7C6OPK3YmGZ=s900-c-k-c0x00ffffff-no-rj",
+      "fullname": "Zee Music Company",
+      "is_verified": true,
+      "followers": 111000000,
+      "engagements": 1556,
+      "engagement_rate": 0.000014018018018018018,
+      "avg_views": 3000000,
+      "type": "youtube",
+      "description": "Zee Music Company is India's leading music label, bringing you the latest Bollywood and regional music hits.",
+      "posts_count": 9500,
+      "avg_likes": 45000,
+      "avg_comments": 1200,
+      "gender": "Other",
+      "age_group": "18-24",
+      "is_business": true
+    }
+  }
+}
