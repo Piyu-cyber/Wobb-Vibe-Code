@@ -66,7 +66,20 @@ export function ProfileCard({
             <h3 className="font-bold text-slate-800 text-lg group-hover:text-primary-600 transition-colors">
               {profile.fullname || profile.username}
             </h3>
-            <p className="text-sm text-slate-500 font-medium">@{profile.username || profile.handle}</p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-slate-500 font-medium">@{profile.username || profile.handle}</p>
+              {profile.url && (
+                <a
+                  href={profile.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-0.5 rounded-full font-medium transition-colors flex items-center gap-0.5"
+                >
+                  Visit ↗
+                </a>
+              )}
+            </div>
             
             {/* Bio snippet */}
             {profile.description && (

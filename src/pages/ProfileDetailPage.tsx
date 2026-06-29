@@ -118,7 +118,19 @@ export function ProfileDetailPage() {
                   {user.fullname || user.username}
                   <VerifiedBadge verified={user.is_verified} />
                 </h1>
-                <p className="text-lg text-slate-500 font-medium">@{user.username || user.handle}</p>
+                <div className="flex flex-wrap items-center gap-3 mt-1">
+                  <p className="text-lg text-slate-500 font-medium">@{user.username || user.handle}</p>
+                  {user.url && (
+                    <a
+                      href={user.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold rounded-full transition-colors"
+                    >
+                      View on {(user.type || platform).charAt(0).toUpperCase() + (user.type || platform).slice(1)} ↗
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
             

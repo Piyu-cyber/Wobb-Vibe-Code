@@ -75,7 +75,19 @@ function SortableItem({ profile, onRemove }: SortableItemProps) {
           {profile.fullname || profile.username}
           <VerifiedBadge verified={profile.is_verified} />
         </Link>
-        <p className="text-sm text-slate-500 font-medium truncate">@{profile.username || profile.handle}</p>
+        <div className="flex items-center gap-2 mt-0.5">
+          <p className="text-sm text-slate-500 font-medium truncate">@{profile.username || profile.handle}</p>
+          {profile.url && (
+            <a
+              href={profile.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-0.5 rounded-full font-medium transition-colors"
+            >
+              Visit ↗
+            </a>
+          )}
+        </div>
         <div className="flex items-center gap-2 mt-1">
           <span className="text-xs font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded">
             {formatFollowers(profile.followers)} followers
