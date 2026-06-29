@@ -61,20 +61,20 @@ npm run build
 
 This starter code intentionally included several broken edge cases that would crash the app or lead to a poor user experience. The following bugs were systematically tracked down and resolved:
 
-1. **The "Missing 24" Detail Crash:** The initial repo only contained 6 detailed profile JSONs. Clicking any of the other 24 profiles caused the `ProfileDetailPage` to crash or show empty placeholders. 
-   * **Fix:** Built a utility script to dynamically generate the missing 24 JSON files, merging known search metrics with placeholder details.
-2. **Malformed JSON Wrapper Exception:** The `profileLoader` strictly expected the JSON to return a `{ data: { user_profile: ... } }` object. Bare JSON objects were causing `undefined` property crashes.
-   * **Fix:** Enforced the strict API wrapper schema across all 30 generated and existing JSON files.
-3. **Broken YouTube Avatars (404s):** Many image URLs in the starter `youtube.json` (MrBeast, SET India, PewDiePie) returned 404s, resulting in ugly broken images. 
-   * **Fix:** First added a `ui-avatars.com` error fallback in the `ProfileCard`. Then, wrote a scraper to fetch the live, current `og:image` tags directly from their YouTube channels to permanently fix the URLs, while carefully preserving specific working logos (like Cocomelon).
-4. **The `MrBeast6000` Routing Mismatch:** MrBeast's handle was outdated (`@MrBeast6000`), causing routing logic failures between the search summary and the detailed view.
-   * **Fix:** Normalized his `handle` and `username` to `MrBeast` across all JSON files and renamed the source file.
-5. **Vite Dynamic Import Disconnect:** Vite's `import.meta.glob` requires exact matching. For creators like Cocomelon, the `username` in the search summary was missing, so the app routed via the `handle` ("CoComelon"). This bypassed the loader (which expected "checkgate.json").
-   * **Fix:** Injected the correct underlying `username` into the search summaries to ensure perfect 1:1 mapping between the router and Vite's file loader.
-6. **Missing Bios in List View:** The `ProfileCard` felt empty because the search summary data lacked the creator's bio/description.
-   * **Fix:** Wrote a migration script to extract `description` strings from the 30 detailed JSONs and inject them backwards into the search summary files, then updated the `UserProfileSummary` TypeScript interface to render them elegantly on the cards.
-7. **Unprofessional Platform Icons:** The filter tabs were using hardcoded emojis (📷, ▶️, 🎵).
-   * **Fix:** Replaced them with proper, scalable SVG logos for Instagram, YouTube, and TikTok integrated directly into the `PlatformFilter` component.
+| # | Bug | File / Location |
+|---|---|---|
+| 1 | `react-beautiful-dnd` React 19 conflict | `package.json` |
+| 2 | Add to List button disabled | `ProfileCard.tsx` |
+| 3 | YouTube avatars broken | `youtube.json` |
+| 4 | Engagement rate multiplied by 100 twice | `formatters.ts` |
+| 5 | Duplicate engagement metrics displayed | `ProfileDetailPage.tsx` |
+| 6 | 25 of 30 profile JSONs missing | `profiles/` |
+| 7 | Search input missing `id`/`name` | `SearchBar.tsx` |
+| 8 | CSP `eval()` violation | `react-beautiful-dnd` |
+| 9 | Dead `data-search` DOM attribute | `ProfileCard.tsx` |
+| 10 | Duplicate follower formatter | `ProfileCard.tsx` |
+| 11 | Redundant `onProfileClick` prop | `ProfileCard.tsx` |
+| 12 | Case-sensitive username search | `dataHelpers.ts` |
 
 ## 🚀 Submission Details
 
