@@ -1,10 +1,24 @@
-# Wobb Influencer Search — Vibe Coder Assignment
+# 🌟 Wobb Creator Search & Roster Builder
 
-A premium, high-performance influencer search and campaign roster builder application built with **React 19**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion**.
+<p align="center">
+  <img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62B" alt="Vite" />
+  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Zustand-orange?style=for-the-badge" alt="Zustand" />
+</p>
 
-🚀 **Live Demo:** [https://wobb-vibe-code.vercel.app](https://wobb-vibe-code.vercel.app)
+<p align="center">
+  A premium, high-performance creator search and roster builder application tailored for modern influencer marketing.
+</p>
 
-*This project is a completed submission for the Wobb "Vibe Coder" Internship position. It takes a functional starter prototype and significantly upgrades the UI/UX, squashes critical bugs, and completes the remaining functionality.*
+<p align="center">
+  🚀 <b>Live Interactive Demo:</b> <a href="https://wobb-vibe-code.vercel.app" target="_blank">wobb-vibe-code.vercel.app</a>
+</p>
+
+> [!NOTE]
+> This project is a finalized submission for the **Wobb Vibe Coder Intern** position. It takes a functional starter prototype and significantly upgrades the UI/UX with premium glassmorphism, fixes 12 critical engineering/data bugs, and completes the drag-and-drop campaign roster features.
 
 ---
 
@@ -47,11 +61,11 @@ graph TD
 
 ## 🚀 Features
 
-* **Search & Filter:** Instantly filter influencers by platform (Instagram, YouTube, TikTok) and search by their username or full name with case-insensitive, optimized matching.
-* **Modern Glassmorphism UI:** Completely redesigned with premium, animated glass-card components, soft gradients, and interactive hover states using Framer Motion.
-* **Detailed Profiles:** View rich profile data, including follower counts, engagement metrics, descriptions, and dynamic avatar generation.
-* **Campaign List (Drag & Drop):** Seamlessly add/remove creators to your personal campaign list, persisted across routes via Zustand state management. Fully reorderable via `@dnd-kit/core`.
-* **Fault-Tolerant Data:** Elegantly handles missing JSON data and absent usernames without crashing the app.
+* 🔍 **Search & Filter:** Instantly filter influencers by platform (Instagram, YouTube, TikTok) and search by their username or full name with case-insensitive, optimized matching.
+* ✨ **Modern Glassmorphism UI:** Completely redesigned with premium, animated glass-card components, soft gradients, and interactive hover states using Framer Motion.
+* 👤 **Detailed Profiles:** View rich profile data, including follower counts, engagement metrics, descriptions, and dynamic avatar generation.
+* 📋 **Campaign List (Drag & Drop):** Seamlessly add/remove creators to your personal campaign list, persisted across routes via Zustand state management. Fully reorderable via `@dnd-kit/core`.
+* 🛡️ **Fault-Tolerant Data:** Elegantly handles missing JSON data and absent usernames without crashing the app.
 
 ---
 
