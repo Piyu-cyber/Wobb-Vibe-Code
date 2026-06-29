@@ -96,14 +96,14 @@ export function ProfileDetailPage() {
         animate={{ opacity: 1, y: 0 }}
         className="glass-panel overflow-hidden"
       >
-        <div className="h-32 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-600 opacity-90 relative">
+        <div className="h-32 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-600 opacity-90 relative z-0">
            <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]"></div>
         </div>
         
         <div className="px-8 pb-8 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end -mt-16 mb-8 gap-6">
-            <div className="flex items-end gap-6">
-              <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end -mt-16 mb-8 gap-6 relative z-10">
+            <div className="flex items-end gap-6 relative z-10">
+              <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white relative z-10">
                 <img
                   src={user.picture || `https://ui-avatars.com/api/?name=${user.username || user.handle}&background=random`}
                   alt={user.username}
@@ -113,7 +113,7 @@ export function ProfileDetailPage() {
                   }}
                 />
               </div>
-              <div className="pb-2">
+              <div className="pb-2 relative z-10">
                 <h1 className="text-3xl font-black text-slate-800 flex items-center gap-2 tracking-tight">
                   {user.fullname || user.username}
                   <VerifiedBadge verified={user.is_verified} />
