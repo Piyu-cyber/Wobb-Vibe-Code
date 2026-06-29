@@ -101,9 +101,9 @@ export function ProfileDetailPage() {
         </div>
         
         <div className="px-8 pb-8 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end -mt-16 mb-8 gap-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-6 relative z-10">
             <div className="flex items-end gap-6 relative z-10">
-              <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white relative z-10">
+              <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white relative -top-16 z-10">
                 <img
                   src={user.picture || `https://ui-avatars.com/api/?name=${user.username || user.handle}&background=random`}
                   alt={user.username}
