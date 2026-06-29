@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import type { Platform } from "@/types";
 import { Layout } from "@/components/Layout";
 import { PlatformFilter } from "@/components/PlatformFilter";
@@ -8,21 +8,21 @@ import { extractProfiles, filterProfiles } from "@/utils/dataHelpers";
 export function SearchPage() {
   const [platform, setPlatform] = useState<Platform>("instagram");
   const [searchQuery, setSearchQuery] = useState("");
-  const [clickCount, setClickCount] = useState(0);
 
-  const allProfiles = extractProfiles(platform);
-  const filtered = filterProfiles(allProfiles, searchQuery);
-
-  const handleProfileClick = (username: string) => {
-    setClickCount(clickCount + 1);
-    console.log("Clicked profile:", username, "total clicks:", clickCount);
-  };
+  const allProfiles = useMemo(() => extractProfiles(platform), [platform]);
+  const filtered = useMemo(
+    () => filterProfiles(allProfiles, searchQuery),
+    [allProfiles, searchQuery]
+  );
 
   return (
-    <Layout title="Find Influencers">
-      <p className="text-gray-500 mb-4 text-sm">
-        Browse top creators across social platforms
-      </p>
+    <Layout>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-900">Find Influencers</h1>
+        <p className="text-gray-500 text-sm mt-1">
+          Browse top creators across social platforms
+        </p>
+      </div>
 
       <PlatformFilter
         selected={platform}
@@ -34,7 +34,7 @@ export function SearchPage() {
         onSearchChange={setSearchQuery}
       />
 
-      <p className="text-xs text-gray-400 mb-2">
+      <p className="text-xs text-gray-400 mb-3">
         Showing {filtered.length} of {allProfiles.length} on {platform}
       </p>
 
@@ -42,7 +42,7 @@ export function SearchPage() {
         profiles={filtered}
         platform={platform}
         searchQuery={searchQuery}
-        onProfileClick={handleProfileClick}
+        onProfileClick={() => {}}
       />
     </Layout>
   );
