@@ -29,7 +29,7 @@ export function ProfileDetailPage() {
     setIsLoading(true);
     setHasError(false);
 
-    loadProfileByUsername(username)
+    loadProfileByUsername(username, platform)
       .then((data) => {
         if (!active) return;
         setProfileData(data);

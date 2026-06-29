@@ -80,4 +80,6 @@ This starter code intentionally included several broken edge cases that would cr
 
 ## 🚀 Submission Details
 
+*   **Note on TikTok Assets:** Since TikTok is banned in India, live assets and real-time profile links from TikTok's CDN are geoblocked and cannot be directly accessed or scraped. As a result, static fallback assets (e.g., Wikimedia Commons for Khaby Lame) are utilized for TikTok creators to ensure the UI renders correctly.
+
 This project is a finalized submission for the Wobb Vibe Coder Intern position. The development process focused heavily on demonstrating strong visual judgment, modern frontend practices, and robust error handling.
