@@ -100,7 +100,7 @@ export function ProfileDetailPage() {
            <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]"></div>
         </div>
         
-        <div className="px-8 pb-8 relative">
+        <div className="px-8 pb-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end -mt-16 mb-8 gap-6">
             <div className="flex items-end gap-6">
               <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-white">
