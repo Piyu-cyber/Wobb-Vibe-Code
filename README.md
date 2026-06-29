@@ -2,6 +2,8 @@
 
 A modern, high-performance influencer search application built with **React**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion**.
 
+🚀 **Live Demo:** [https://wobb-vibe-code.vercel.app](https://wobb-vibe-code.vercel.app)
+
 This project is a completed submission for the Wobb "Vibe Coder" Internship assignment. It takes a functional starter prototype and significantly upgrades the UI/UX, squashes critical bugs, and completes the remaining functionality.
 
 ## 🚀 Features
